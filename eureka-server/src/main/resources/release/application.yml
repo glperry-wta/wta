@@ -1,0 +1,24 @@
+#日志配置(spring boot提供了对logback日志的支持)
+logging:
+  pattern:
+    #%d:日志时间点,%msg:日志信息输出,%n:换行符(Unix)
+    console: "%d -%msg%n"
+    level: debug
+  file: /opt/wta/logs/spring-boot-eureka.log
+
+#服务端口
+server:
+  port: 8761
+
+#eureka配置
+euraka:
+  instance:
+    hostname: localhost
+    metadata-map:
+      user.name: admin
+      user.password: admin
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    service-url:
+      defaultZone: http:/${eureka.instance.hostname}:${server.port}/eureka/
